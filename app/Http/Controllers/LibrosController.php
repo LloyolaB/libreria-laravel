@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Libros;
+use App\Models\Categorias;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,7 +17,7 @@ class LibrosController extends Controller
     public function index()
     {
         //
-        $datos['libros'] = Libros::paginate(5);
+        $datos['libros'] = Libros::all();
         return view('libro/index', $datos);
     }
 
@@ -28,8 +29,10 @@ class LibrosController extends Controller
     public function create()
     {
         //
+        $categorias = Categorias::all();
+        $libros = Libros::paginate(5);
 
-        return view('libro/create');
+        return view('libro/create', compact('categorias', 'libros'));
     }
 
     /**
@@ -88,7 +91,10 @@ class LibrosController extends Controller
     {
         //buscamos el libro por el id
         $libros = Libros::findOrFail($id);
-        return view('libro.edit', compact('libros'));
+        //buscamos las categorias
+        $categorias = Categorias::all();
+
+        return view('libro.edit', compact('libros', 'categorias'));
     }
 
     /**
@@ -133,8 +139,10 @@ class LibrosController extends Controller
         Libros::where('id', '=', $id)->update($datosDeLibro);
         //Volvemos a buscar por el id
         $libros = Libros::findOrFail($id);
+        //redireccionamos a la vista index con un mensaje
+        $categorias = Categorias::all();
         //retornamos la vista con los nuevos datos
-        return view('libro.edit', compact('libros'));
+        return view('libro.edit', compact('libros', 'categorias'))->with('mensaje', 'Libro modificado con éxito');
     }
 
     /**

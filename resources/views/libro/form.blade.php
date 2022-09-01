@@ -21,12 +21,17 @@
 </div>
 <div class="form-group">
 <label for="editorial">Ingresa Editorial</label>
-<input type="text" class='form-control' name="editorial" value= "{{isset($libros->editorial)?$libros->editorial:old('editorial')}}" id="">
-
-</div>
+<input type="text" class='form-control' name="editorial" value= "{{isset($libros->editorial)?$libros->editorial:old('editorial')}}" id=""></div>
+<div class="form-group">
 <label for="categoria">Ingresa categoria</label>
-<input type="text" class='form-control' name="categoria_id" value = "{{isset($libros->categoria_id)?$libros->categoria_id:old('categoria_id')}}" id="">
-
+{{-- <input type="text" class='form-control' name="categoria_id" value = "{{isset($libros->categoria_id)?$libros->categoria_id:old('categoria_id')}}" id=""> --}}
+<select name="categoria_id" id="" class="form-control">
+    <option disabled selected>Selecciona una opción</option>
+    @foreach ($categorias as $categoria) 
+    <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+    @endforeach
+</select>
+</div>
 <div class="form-group">
 <label for="foto"></label>
 @if(@isset($libros->foto))

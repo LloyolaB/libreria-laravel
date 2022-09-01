@@ -12,7 +12,7 @@
             <a href="{{url('/libros/create')}}" class="btn btn-success">Registrar Nuevo Libro</a>
         </div>
         <div class="col-4">
-            <a href="{{url('/libros/create')}}" class="btn btn-primary">Crear Nueva Categoria</a>
+            <a href="{{url('/categorias/create')}}" class="btn btn-primary">Crear Nueva Categoria</a>
         </div>
     </div>
 
