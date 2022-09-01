@@ -12,6 +12,6 @@ Este proyecto me sirvió para conocer mas sobre este framework y familiarizarme 
 
 ## Comandos
 
-Npm install
-Npm run dev
-php artisan serve
+-   Npm install
+-   Npm run dev
+-   php artisan serve
