@@ -94,6 +94,7 @@ class LibrosController extends Controller
         //buscamos las categorias
         $categorias = Categorias::all();
 
+        //retornamos la vista con los datos        
         return view('libro.edit', compact('libros', 'categorias'));
     }
 
@@ -142,7 +143,7 @@ class LibrosController extends Controller
         //redireccionamos a la vista index con un mensaje
         $categorias = Categorias::all();
         //retornamos la vista con los nuevos datos
-        return view('libro.edit', compact('libros', 'categorias'))->with('mensaje', 'Libro modificado con éxito');
+        return redirect('libros')->with('mensaje', 'Libro modificado con éxito');
     }
 
     /**
